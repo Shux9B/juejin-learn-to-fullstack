@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狗屁不通文章生成器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="options">
+            <div>最小字数：<input id="min" type="range" min="500" max="5000" step="100" value="2000"><span>2000</span></div>
+            <div>最大字数：<input id="max" type="range" min="1000" max="10000" step="100" value="5000"><span>5000</span>
+            </div>
+        </div>
+        <div class="title"><span>标题：</span><input id="title" type="text" value="">
+            <button id="generate">生成</button>
+        </div>
+    </header>
+    <main>
+        <article></article>
+    </main>
+    <script src="./index.js"></script>
+    <script type="module">
+        const { gen, loadCorpus } = bullshitGenerator;
+        const corpus = await loadCorpus()
+        const options = document.querySelector('.options');
+        const config = { min: 2000, max: 5000 };
+        options.addEventListener('change', ({ target }) => {
+            const num = Number(target.value);
+            config[target.id] = num;
+            target.parentNode.querySelector('input + span').innerHTML = num;
+        });
+        const generateButton = document.getElementById('generate');
+        const article = document.querySelector('article');
+        const titleEl = document.getElementById('title');
+
+        (async function () {
+            generateButton.addEventListener('click', () => {
+                const text = gen({ title: titleEl.value, ...config, corpus });
+                article.innerHTML = `<section>${text.article.join('</section><section>')}</section>`;
+            });
+        }());
+    </script>
+</body>
+
+</html>

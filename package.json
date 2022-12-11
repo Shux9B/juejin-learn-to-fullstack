@@ -1,0 +1,24 @@
+{
+  "name": "documentGen",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "node build.js",
+    "serve": "node serve/http-static.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "command-line-args": "^5.2.1",
+    "command-line-usage": "^6.1.3",
+    "mime": "^3.0.0",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.16.4"
+  }
+}
