@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "build": "node build.js",
-    "serve": "node serve/http-static.js"
+    "serve": "node serve/http-watch.js"
   },
   "keywords": [],
   "author": "",

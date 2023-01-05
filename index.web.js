@@ -10,3 +10,4 @@ export function gen(userInput) {
         article: generate(userInput.title, userInput)
     }
 }
+alert('88888888')
